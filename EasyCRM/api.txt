@@ -1,0 +1,59 @@
+# POST Авторизация - получение токена
+    http://127.0.0.1:8000/api/v1/auth_token/token/login
+
+    # Запрос
+        payload = {'username': 'edeed96',
+        'password': '19960415'}
+
+    # Ответ
+        {
+        "auth_token": "2df5f6ee2beafeda183c409f1ef868194aef8f6a"
+        }
+
+# POST Выход - уничтожение токена
+    http://127.0.0.1:8000/api/v1/auth_token/token/logout
+
+    # Запрос
+        headers = {
+        'Authorization': 'Token 2df5f6ee2beafeda183c409f1ef868194aef8f6a'
+        }
+
+
+# GET Получить все записи
+    http://127.0.0.1:8000/api/v1/orders/all
+
+
+# GET/PUT Получить/Изменить запись
+    http://127.0.0.1:8000/api/v1/orders/order/detail/1/
+
+
+# POST Создать запись
+    http://127.0.0.1:8000/api/v1/orders/order/create/
+
+    # Поля
+        "id": 10,
+        "first_name": "Евдокия",
+        "second_name": "Шляпна",
+        "middle_name": "",
+        "phone": null,
+        "city": "",
+        "department": "",
+        "waybill": null,
+        "order": "",
+        "comment": "",
+        "state": 1,
+        "price": null,
+        "create_date": "2020-10-07T14:12:22.439588+03:00",
+        "update_date": "2020-10-07T14:12:22.439874+03:00"
+
+    # Запрос
+        payload = {'second_name': 'Шляпна',
+        'first_name': 'Евдокия'}
+
+        files = [
+
+        ]
+
+        headers = {
+          'Authorization': 'Token 2df5f6ee2beafeda183c409f1ef868194aef8f6a'
+        }
