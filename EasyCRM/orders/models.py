@@ -5,16 +5,6 @@ from django.utils import timezone
 User = get_user_model()
 
 
-class Project(models.Model):
-    name = models.CharField(verbose_name='Название', max_length=150)
-    country = models.CharField(verbose_name='Страна', max_length=150, blank=True)
-    np_api = models.CharField(verbose_name='API ключ "Новая Почта', max_length=150, blank=True)
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-
 class Order(models.Model):
     first_name = models.CharField(verbose_name='Имя', max_length=150, blank=True)
     second_name = models.CharField(verbose_name='Фамилия', max_length=150, blank=True)
@@ -43,4 +33,4 @@ class Order(models.Model):
     create_date = models.DateTimeField(verbose_name='Дата создания', default=timezone.now, blank=True)
     update_date = models.DateTimeField(verbose_name='Дата изменения', auto_now=True, blank=True)
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-    project = models.ForeignKey(Project, verbose_name='Проект', default=1, on_delete=models.CASCADE)
+    project = models.ForeignKey('projects.Project', verbose_name='Проект', default=1, on_delete=models.CASCADE)

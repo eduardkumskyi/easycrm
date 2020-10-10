@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from .models import Order, Project
+from .models import Order
 from .forms import UserFilteredPrimaryKeyRelatedField
+from projects.models import Project
 
 
 class OrdersListSerializer(serializers.ModelSerializer):
@@ -16,17 +17,3 @@ class OrderDetailSerializer(serializers.ModelSerializer):
         model = Order
         fields = '__all__'
         project = UserFilteredPrimaryKeyRelatedField(queryset=Project.objects.all)
-
-
-class ProjectsListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Project
-        fields = ('id', 'name', 'country', 'np_api', 'user')
-
-
-class ProjectDetailSerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-
-    class Meta:
-        model = Project
-        fields = '__all__'

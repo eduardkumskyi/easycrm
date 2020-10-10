@@ -2,13 +2,14 @@
     http://127.0.0.1:8000/api/v1/auth_token/token/login
 
     # Запрос
-        payload = {'username': 'edeed96',
-        'password': '19960415'}
+        payload = {'username': '',
+        'password': ''}
 
     # Ответ
         {
         "auth_token": "2df5f6ee2beafeda183c409f1ef868194aef8f6a"
         }
+
 
 # POST Выход - уничтожение токена
     http://127.0.0.1:8000/api/v1/auth_token/token/logout
@@ -19,15 +20,94 @@
         }
 
 
-# GET Получить все записи
+# POST Регистрация
+    http://127.0.0.1:8000/api/v1/auth/users/
+    {
+        "username": [
+            "Это поле обязательно."
+        ],
+        "password": [
+            "Это поле обязательно."
+        ]
+    }
+
+
+###########################################################################
+
+
+# GET Получить информацию о текущем пользователе
+    http://127.0.0.1:8000/api/v1/auth/users/me/
+
+
+# POST Сменить пароль
+    http://127.0.0.1:8000/api/v1/auth/users/set_password/
+
+    {
+    "new_password": [
+        "Это поле обязательно."
+    ],
+    "current_password": [
+        "Это поле обязательно."
+    ]
+    }
+
+
+# POST Восстановить пароль (не работает)
+    http://127.0.0.1:8000/api/v1/auth/users/reset_password/
+
+    {
+        "email": [
+            "Это поле обязательно."
+        ]
+    }
+
+
+# POST Сменить username
+    http://127.0.0.1:8000/api/v1/auth/users/set_username/
+
+    {
+    "current_password": [
+        "Это поле обязательно."
+    ],
+    "new_username": [
+        "Это поле обязательно."
+    ]
+    }
+
+
+###########################################################################
+
+
+# GET Получить все проекты
+    http://127.0.0.1:8000/api/v1/projects/all/
+
+# GET/PUT Получить/Изменить проект
+    http://127.0.0.1:8000/api/v1/projects/project/detail/1/
+
+# POST Создать проект
+    http://127.0.0.1:8000/api/v1/projects/project/create/
+
+    # Поля
+        {
+        "id": 2,
+        "name": "Проект второго пользователя",
+        "country": "",
+        "np_api": ""
+        }
+
+
+###########################################################################
+
+
+# GET Получить все заказы
     http://127.0.0.1:8000/api/v1/orders/all
 
 
-# GET/PUT Получить/Изменить запись
+# GET/PUT Получить/Изменить заказ
     http://127.0.0.1:8000/api/v1/orders/order/detail/1/
 
 
-# POST Создать запись
+# POST Создать заказ
     http://127.0.0.1:8000/api/v1/orders/order/create/
 
     # Поля
