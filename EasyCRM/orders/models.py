@@ -28,7 +28,7 @@ class Order(models.Model):
         (10, 'Отмена'),
         (11, 'Возврат/Обмен'),
     )
-    state = models.IntegerField(verbose_name='Статус', choices=STATES, default='1')
+    state = models.IntegerField(verbose_name='Статус', choices=STATES, default=1)
     price = models.IntegerField(verbose_name='Сумма', null=True, blank=True)
     create_date = models.DateTimeField(verbose_name='Дата создания', default=timezone.now, blank=True)
     update_date = models.DateTimeField(verbose_name='Дата изменения', auto_now=True, blank=True)
