@@ -59,5 +59,4 @@ def np_status_update_all():
                         order = Order.objects.get(id=order.id)
                         order.state = new_state
                         order.save()
-    print("ПОЛУЧИЛОСЬ")
-    open('text.txt', 'a+').write(datetime.datetime.now().isoformat())
+    print("Все статусы успешно обновлены.")
