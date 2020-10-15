@@ -1,3 +1,5 @@
+import datetime
+
 import requests
 from projects.models import Project
 from orders.models import Order
@@ -58,3 +60,5 @@ def np_status_update_all():
                         order.state = new_state
                         order.save()
     print("ПОЛУЧИЛОСЬ")
+    open('text.txt', 'a+').write(datetime.datetime.now().isoformat())
+
