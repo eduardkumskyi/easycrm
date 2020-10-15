@@ -146,3 +146,17 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+# Celery
+CELERY_BROKER_URL = 'redis://h:pc215457df7d2e1ab563bd2984da62a5288a4fc6a654732c0098d55726a7eb9ff@ec2-54-147-75-81.compute-1.amazonaws.com:24339'
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+# CELERY_BEAT_SCHEDULE = {
+#     'dashboard_update': {
+#
+#         'task': 'GSD.tasks.dashboard_update_task',
+#         'schedule': 1.0,
+#     },
+# }

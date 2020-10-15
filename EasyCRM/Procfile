@@ -1,1 +1,3 @@
 web: gunicorn EasyCRM.wsgi --log-file -
+worker: celery -A EasyCRM worker -l INFO
+celery -A EasyCRM beat -l INFO
