@@ -2,13 +2,10 @@ from django.shortcuts import render
 from rest_framework import generics
 
 from django.http import HttpResponse
-# from apiconnections.tasks import periodic_np_status_update
 from .serializers import OrderDetailSerializer, OrdersListSerializer
 from .models import Order
 from .permissions import IsOwnerOrReadOnly
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
-
-# from .tasks import periodic_np_status_update_all
 
 
 class OrderCreateView(generics.CreateAPIView):
@@ -30,7 +27,3 @@ class OderDetailView(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user.id)
     permission_classes = (IsOwnerOrReadOnly, )
-
-# def tester(request):
-#     periodic_np_status_update_all.delay()
-#     return HttpResponse("Пошло")

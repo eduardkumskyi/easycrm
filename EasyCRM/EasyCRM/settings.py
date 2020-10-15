@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from huey import RedisHuey
+from redis import ConnectionPool
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'huey.contrib.djhuey',
 
     'orders',
     'projects',
@@ -147,16 +150,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-# Celery
-CELERY_BROKER_URL = 'redis://h:pc215457df7d2e1ab563bd2984da62a5288a4fc6a654732c0098d55726a7eb9ff@ec2-54-147-75-81.compute-1.amazonaws.com:24339'
+REDIS_URL = 'redis://h:pc215457df7d2e1ab563bd2984da62a5288a4fc6a654732c0098d55726a7eb9ff@ec2-54-147-75-81.compute-1.amazonaws.com:24339'
 
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-
-# CELERY_BEAT_SCHEDULE = {
-#     'dashboard_update': {
-#
-#         'task': 'GSD.tasks.dashboard_update_task',
-#         'schedule': 1.0,
-#     },
-# }
+# HUEY
+pool = ConnectionPool.from_url(os.environ.get('REDIS_URL', REDIS_URL))
+HUEY = RedisHuey('my-app', connection_pool=pool)
