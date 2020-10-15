@@ -61,4 +61,3 @@ def np_status_update_all():
                         order.save()
     print("ПОЛУЧИЛОСЬ")
     open('text.txt', 'a+').write(datetime.datetime.now().isoformat())
-

@@ -1,2 +1,2 @@
 web: gunicorn EasyCRM.wsgi --log-file -
-worker: python EasyCRM/manage.py run_huey
+worker: python manage.py run_huey
