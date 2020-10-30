@@ -1,6 +1,8 @@
 import datetime
 
 import requests
+
+from apiconnections.TurboSMS import turbosms_notification
 from projects.models import Project
 from orders.models import Order
 
@@ -53,7 +55,19 @@ def np_status_update_all():
                     pass
                 else:
                     new_state = np_status_update(str(project.np_api), str(order.waybill))
-                    if new_state is None:
+                    if new_state == 6 and order.message_1 is False:
+                        turbosms_notification(order.phone, project.turbosms_sender,
+                                              f"Ваш заказ отправлен, номер ТТН:{order.waybill}", project.turbosms_api)
+                        order = Order.objects.get(id=order.id)
+                        order.message_1 = True
+                        order.save()
+                    elif new_state == 8 and order.message_2 is False:
+                        turbosms_notification(order.phone, project.turbosms_sender,
+                                              f"Ваш заказ уже в отделении, период хранение 5 дней.", project.turbosms_api)
+                        order = Order.objects.get(id=order.id)
+                        order.message_2 = True
+                        order.save()
+                    elif new_state is None:
                         pass
                     else:
                         order = Order.objects.get(id=order.id)

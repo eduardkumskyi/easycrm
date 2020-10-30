@@ -9,6 +9,6 @@ from apiconnections.novaposhta import np_status_update_all
 #     print('-- counted %s beans --' % number)
 #     return 'Counted %s beans' % number
 
-@periodic_task(crontab(minute='*/5'))
+@periodic_task(crontab(minute='*/1'))
 def periodic_np_status_update_all():
     np_status_update_all()

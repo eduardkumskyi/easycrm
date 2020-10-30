@@ -34,3 +34,6 @@ class Order(models.Model):
     update_date = models.DateTimeField(verbose_name='Дата изменения', auto_now=True, blank=True)
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
     project = models.ForeignKey('projects.Project', verbose_name='Проект', default=1, on_delete=models.CASCADE)
+    message_1 = models.BooleanField(verbose_name='Сообщение №1', default=False)
+    message_2 = models.BooleanField(verbose_name='Сообщение №2', default=False)
+    message_3 = models.BooleanField(verbose_name='Сообщение №3', default=False)

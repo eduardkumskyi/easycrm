@@ -150,7 +150,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-REDIS_URL = 'redis://h:pc215457df7d2e1ab563bd2984da62a5288a4fc6a654732c0098d55726a7eb9ff@ec2-54-147-75-81.compute-1.amazonaws.com:24339'
+REDIS_URL = 'redis://h:pc215457df7d2e1ab563bd2984da62a5288a4fc6a654732c0098d55726a7eb9ff@ec2-54-227-196-98.compute-1.amazonaws.com:13459'
 
 # HUEY
 pool = ConnectionPool.from_url(os.environ.get('REDIS_URL', REDIS_URL))
