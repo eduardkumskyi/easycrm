@@ -160,7 +160,7 @@ pool = ConnectionPool.from_url(os.environ.get('REDIS_URL', REDIS_URL))
 HUEY = RedisHuey('my-app', connection_pool=pool)
 
 # CORS
-CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+    CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3030',
