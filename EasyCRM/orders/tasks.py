@@ -1,7 +1,7 @@
 from huey import crontab
 from huey.contrib.djhuey import periodic_task, task
 
-from apiconnections.novaposhta import np_status_update_all
+from apiconnections.novaposhta import np_state_update_all
 
 
 # @task()
@@ -10,5 +10,5 @@ from apiconnections.novaposhta import np_status_update_all
 #     return 'Counted %s beans' % number
 
 @periodic_task(crontab(minute='*/1'))
-def periodic_np_status_update_all():
-    np_status_update_all()
+def periodic_np_state_update_all():
+    np_state_update_all()
