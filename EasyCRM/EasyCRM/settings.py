@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'huey.contrib.djhuey',
+    'corsheaders',
 
     'orders',
     'projects',
@@ -59,6 +60,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'EasyCRM.urls'
@@ -155,3 +158,13 @@ REDIS_URL = 'redis://h:pc215457df7d2e1ab563bd2984da62a5288a4fc6a654732c0098d5572
 # HUEY
 pool = ConnectionPool.from_url(os.environ.get('REDIS_URL', REDIS_URL))
 HUEY = RedisHuey('my-app', connection_pool=pool)
+
+# CORS
+CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3030',
+] # If this is used, then not need to use `CORS_ORIGIN_ALLOW_ALL = True`
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'http://localhost:3030',
+]
