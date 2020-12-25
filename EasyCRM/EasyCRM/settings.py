@@ -90,8 +90,12 @@ WSGI_APPLICATION = 'EasyCRM.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'da8auj40bcrr8v',
+        'USER': 'rcgpzmxzjinjzm',
+        'PASSWORD': '16f97f064e73e76a35272be3ee01e292af76328092014fd04bf899e1f2d52819',
+        'HOST': 'ec2-34-235-62-201.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
