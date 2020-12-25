@@ -2,8 +2,7 @@ import math
 import requests
 
 from apiconnections.TurboSMS import turbosms_notification
-from projects.models import Project
-from orders.models import Order
+from crm.models import Order, Project
 
 
 def np_state_update(np_api_key="", documents_ready="", turbosms_sender="", turbosms_api=""):
@@ -48,9 +47,10 @@ def state_update(status_codes, turbosms_sender, turbosms_api):
                 order = Order.objects.get(id=order.id)
                 order.message_1 = True
                 order.save()
-            elif state == 8 and order.message_2 is False:
+            elif state == 7 and order.message_2 is False:
+                print("Ну и")
                 turbosms_notification(order.phone, turbosms_sender,
-                                      f"Ваш заказ уже в отделении, период хранение 5 дней.", turbosms_api)
+                                      f"Ваш заказ уже в отделении, период хранения 5 дней.", turbosms_api)
                 order = Order.objects.get(id=order.id)
                 order.message_2 = True
                 order.save()
@@ -62,6 +62,8 @@ def np_state_update_all(step=100):
     for project in Project.objects.exclude(np_api=''):
         turbosms_sender = project.turbosms_sender
         turbosms_api = project.turbosms_api
+        print(turbosms_sender)
+        print(turbosms_api)
         orders = Order.objects.filter(waybill__isnull=False, project=project)
         iterations = math.ceil(orders.count() / step)
         for i in range(0, iterations):
