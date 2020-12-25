@@ -36,7 +36,7 @@ class Transaction(models.Model):
     project = models.ForeignKey(Project, verbose_name='Проект', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.name} ({self.sum})"
+        return f"{self.type} ({self.sum})"
 
     class Meta:
         verbose_name = 'Транзацкция'
