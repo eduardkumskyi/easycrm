@@ -30,6 +30,8 @@ def np_state_update(np_api_key="", documents_ready="", turbosms_sender="", turbo
             status_codes.setdefault(i['Number'], 7)
         elif 9 <= int(status_code) <= 11:
             status_codes.setdefault(i['Number'], 8)
+        elif int(status_code) == 102 or 103 or 108:
+            status_codes.setdefault(i['Number'], 9)
         else:
             pass
     return state_update(status_codes, turbosms_sender, turbosms_api)
