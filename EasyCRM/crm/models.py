@@ -58,7 +58,7 @@ class Order(models.Model):
     no_send_messages = models.BooleanField(verbose_name="Не отправлять СМС", default=False)
 
     def __str__(self):
-        return self.id
+        return f"# {self.id}"
 
     class Meta:
         verbose_name = 'Заказ'
