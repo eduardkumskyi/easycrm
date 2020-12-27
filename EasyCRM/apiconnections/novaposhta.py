@@ -41,18 +41,17 @@ def state_update(status_codes, turbosms_sender, turbosms_api):
         order.state = state
         order.save()
         if turbosms_api != "":  # SMS NOTIFICATION
-            if state == 6 and order.message_1 is False:
+            if state == 6 and order.message_1 == "-" and order.no_send_messages is False:
                 turbosms_notification(order.phone, turbosms_sender,
                                       f"Ваш заказ отправлен, номер ТТН:{order.waybill}", turbosms_api)
                 order = Order.objects.get(id=order.id)
-                order.message_1 = True
+                order.message_1 = "Отправлено"
                 order.save()
-            elif state == 7 and order.message_2 is False:
-                print("Ну и")
+            elif state == 7 and order.message_2 == "-" and order.no_send_messages is False:
                 turbosms_notification(order.phone, turbosms_sender,
                                       f"Ваш заказ уже в отделении, период хранения 5 дней.", turbosms_api)
                 order = Order.objects.get(id=order.id)
-                order.message_2 = True
+                order.message_2 = "Отправлено"
                 order.save()
             elif state is None:
                 pass
@@ -62,8 +61,6 @@ def np_state_update_all(step=100):
     for project in Project.objects.exclude(np_api=''):
         turbosms_sender = project.turbosms_sender
         turbosms_api = project.turbosms_api
-        print(turbosms_sender)
-        print(turbosms_api)
         orders = Order.objects.filter(waybill__isnull=False, project=project)
         iterations = math.ceil(orders.count() / step)
         for i in range(0, iterations):

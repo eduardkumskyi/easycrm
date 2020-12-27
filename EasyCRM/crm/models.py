@@ -52,12 +52,13 @@ class Order(models.Model):
     update_date = models.DateTimeField(verbose_name='Дата изменения', auto_now=True, blank=True)
     user = models.ForeignKey(User, verbose_name='Пользователь',  on_delete=models.CASCADE)
     project = models.ForeignKey(Project, verbose_name='Проект', default=1, on_delete=models.CASCADE)
-    message_1 = models.BooleanField(verbose_name='Сообщение №1', default=False)
-    message_2 = models.BooleanField(verbose_name='Сообщение №2', default=False)
-    message_3 = models.BooleanField(verbose_name='Сообщение №3', default=False)
+    message_1 = models.CharField(verbose_name='Сообщение №1', max_length=150, default="-")
+    message_2 = models.CharField(verbose_name='Сообщение №2', max_length=150, default="-")
+    message_3 = models.CharField(verbose_name='Сообщение №3', max_length=150, default="-")
+    no_send_messages = models.BooleanField(verbose_name="Не отправлять СМС", default=False)
 
     def __str__(self):
-        return self.phone
+        return self.id
 
     class Meta:
         verbose_name = 'Заказ'

@@ -7,4 +7,5 @@ urlpatterns = [
     path('api/v1/auth/', include('djoser.urls')),
     path('api/v1/auth_token/', include('djoser.urls.authtoken')),
     path('api/v1/crm/', include('crm.urls')),
+    path('', include('analytics.urls', namespace='analytics')),
 ]
