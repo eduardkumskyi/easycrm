@@ -9,7 +9,7 @@ class OrderAdmin(admin.ModelAdmin):
               'city', 'department', 'waybill', 'order', 'comment',
               'state', 'sum', 'payed_sum', 'project', 'create_date',
               'update_date', 'no_send_messages', 'message_1', 'message_2', 'message_3', 'user']
-    readonly_fields = ['create_date', 'update_date', 'user', 'message_1', 'message_2', 'message_3']
+    readonly_fields = ['update_date', 'user', 'message_1', 'message_2', 'message_3']
     list_filter = ['create_date', 'update_date', 'state']
     verbose_name = "Заказ"
     verbose_name_plural = "Заказы"
