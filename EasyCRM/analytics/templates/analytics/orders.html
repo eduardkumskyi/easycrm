@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.79.0">
-    <title>Analytics</title>
+    <title>Аналитика - Заказы</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 
@@ -93,26 +93,42 @@ body {
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="mb-auto">
     <div>
-      <h3 class="float-md-start mb-0">Cover</h3>
+      <h3 class="float-md-start mb-0">Аналитика</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link active" aria-current="page" href="orders">Заказы</a>
+        <a class="nav-link" href="money">Деньги</a>
+        <a class="nav-link" href="/admin">Admin Panel</a>
       </nav>
     </div>
   </header>
 
+<main class="px-3">
+    <h4>{{ orders_count }}</h4>
+    <p class="h6">Всего принято заказов</p>
+  </main>
+    <main class="px-3">
+    <h4>{{ payed_orders_count }}</h4>
+    <p class="h6">Оплачено</p>
+  </main>
   <main class="px-3">
-    <h1>{{ balance }} грн.</h1>
-    <p class="lead">Текущий баланс</p>
+    <h4>{{ on_the_way_orders }}</h4>
+    <p class="h6">В пути</p>
+  </main>
+  <main class="px-3">
+    <h4>{{ in_department_orders }}</h4>
+    <p class="h6">В отделении</p>
   </main>
 <main class="px-3">
-    <h1>{{ orders_count }}</h1>
-    <p class="lead">Всего принято заказов</p>
+    <h4>{{ waitlist_orders_count }}</h4>
+    <p class="h6">Ожидают отправки</p>
   </main>
-<main class="px-3">
-    <h1>{{ waitlist_orders_count }}</h1>
-    <p class="lead">Ожидают отправки</p>
+  <main class="px-3">
+    <h4>{{ refused_orders }}</h4>
+    <p class="h6">Отказались</p>
+  </main>
+    <main class="px-3">
+    <h4>{{ percent_refused_orders }} %</h4>
+    <p class="h6">% отказов</p>
   </main>
 
   <footer class="mt-auto text-white-50">

@@ -8,5 +8,6 @@ app_name = 'analytics'
 
 
 urlpatterns = [
-    path('analytics/', views.index, name='product_detail'),
+    path('analytics/orders', views.orders),
+    path('analytics/money', views.money),
 ]
