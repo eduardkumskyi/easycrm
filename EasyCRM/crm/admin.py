@@ -4,7 +4,7 @@ from .models import Order, Project
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'first_name', 'last_name', 'phone', 'waybill', 'state', 'sum', 'payed_sum', 'project']
+    list_display = ['id', 'first_name', 'last_name', 'phone', 'waybill', 'state', 'sum', 'payed_sum', 'project', 'create_date']
     fields = ['first_name', 'last_name', 'middle_name', 'phone',
               'city', 'department', 'waybill', 'order', 'comment',
               'state', 'sum', 'payed_sum', 'project', 'create_date',
